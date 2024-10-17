@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+        <form action="welcome.html"  method="post" >
+
+            USER NAME:  <input type="text" name="uname" value="TOM" /> <br>
+
+<label for="pwd" style="color:red" >Password: </label> <input type="password" name="pwd" required >  <br> 
+
+
+            <input type="hidden" value="50" name="hname"  > <br>
+
+                DOB:  <input type="date" name="dob" required="required"  >  <br>
+
+                Email: <input type="email" name="email"  required  placeholder="enter email"  title="email is required"  > <br>
+
+                Fee:  <input type="number" name="fee" > <br>
+
+                Range: <input type="range" name="volume" min="0" max="10"  > <br>
+
+                Pattern : <input type="text" name="p1"  pattern="[A-Z]{2,5}"> <br>
+
+
+               File  Attachement:  <input type="file" name="doc" > <br>
+
+                Gender : <input type="radio" name="gender" value="male" > Male
+                         <input type="radio" name="gender" value="female" > Female   
+                         <input type="radio" name="gender" value="other" > Other   
+
+                         <br>
+
+
+        Courses:  <input type="checkbox" name="course1"  value="java" >  Java     
+                 <input type="checkbox" name="course2"  value="sql" >  SQL    
+                 <input type="checkbox" name="course3"  value="py" >  Python 
+                 <input type="checkbox" name="course4"  value="121" >  .Net         <br>
+
+
+        Qualification:      <select name="qualification">
+                                <option value=" ">--select--</option>
+                                <option value="btech">BTech</option>
+                                <option value="bsc"  selected>BSc</option>
+                                <option value="bcommerce">BCom</option>
+                                <option value="arts"  disabled>BA</option>
+
+
+                            </select>  <br>
+
+
+                <!-- <input type="submit" value="Login"> -->
+
+            Remarks: <textarea name="remark"  cols="40" rows="6" ></textarea>  <br>
+
+
+                <button type="submit">Login</button>  <button type="reset">Reset</button>
+
+        </form>
+        
+
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+  "vehicle": [
+    {
+      "vno": "101",
+      "vname": "honds",
+      "price": 2000,
+      "purchasedate": "2024-09-13",
+      "id": 3
+    },
+    {
+      "vno": "102",
+      "vname": "bike",
+      "price": 3000,
+      "purchasedate": "2024-09-27",
+      "id": 4
+    },
+    {
+      "vno": "ABC123",
+      "vname": "bike",
+      "price": 3000,
+      "purchasedate": "2024-09-20",
+      "id": 5
+    },
+    {
+      "vno": "AP123",
+      "vname": "BULLET",
+      "price": 100000,
+      "purchasedate": "2024-09-02",
+      "id": 6
+    },
+    {
+      "vno": "Ap123",
+      "vname": "KTM",
+      "price": 2569,
+      "purchasedate": "2024-09-02",
+      "id": 7
+    },
+    {
+      "vno": "TS2356",
+      "vname": "honda",
+      "price": 200,
+      "purchasedate": "2024-09-05",
+      "id": 8
+    },
+    {
+      "vno": "AP101",
+      "vname": "BULLET",
+      "price": 20000,
+      "purchasedate": "2024-09-04",
+      "id": 9
+    }
+  ]
+}

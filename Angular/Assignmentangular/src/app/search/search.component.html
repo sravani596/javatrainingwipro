@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <h2>Search Vehicle</h2>
+  <div class="row justify-content-end">
+    <div class="col-md-4">
+      <div class="input-group">
+        <input type="text" class="form-control" [(ngModel)]="searchKey" placeholder="Enter Vehicle No" />
+        <button class="btn btn-outline-secondary" (click)="searchVehicle()">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="vehicle" class="mt-4">
+    <h3>Vehicle Details:</h3>
+    <p>Vehicle No: {{ vehicle.vno }}</p>
+    <p>Vehicle Name: {{ vehicle.vname }}</p>
+    <p>Price: {{ vehicle.price }}</p>
+    <p>Purchase Date: {{ vehicle.purchasedate }}</p>
+  </div>
+</div>

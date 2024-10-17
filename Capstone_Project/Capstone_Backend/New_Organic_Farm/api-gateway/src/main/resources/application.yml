@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/api/products/**
+        - id: cart-service
+          uri: lb://cart-service
+          predicates:
+            - Path=/api/cart/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/orders/**
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/api/payments/**
+        - id: auth-service
+          uri: lb://user-authentication-service
+          predicates:
+            - Path=/api/auth/**
+        - id: farm-partner-service
+          uri: lb://farm-partner-service
+          predicates:
+            - Path=/api/farm-partners/**

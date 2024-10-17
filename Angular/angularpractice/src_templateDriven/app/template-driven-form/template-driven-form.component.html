@@ -1,0 +1,22 @@
+<p>template-driven-form works!</p>
+
+<h1>E-Mail LOGIN PAGE</h1>
+
+<form  class="container col-md-5"   #useForm=ngForm  (ngSubmit)="getFormData(useForm.value)">
+
+    <div class="form-group"> 
+
+    <label for="E-mail" >E-mail</label> 
+    <input type ="email" id="email" name="email" ngModel required #emailcontrol="ngModel"  class="form-control" >
+    <span  style="color:red"  *ngIf="emailcontrol.touched && emailcontrol.invalid">E-mail is Mandatory</span> 
+    </div>
+
+    <div class="form-group"> 
+    <label for="Password" >Password</label>
+        <input type ="password" id="pwd" name="pwd" ngModel required #pwdcontrol="ngModel"  class="form-control" >
+        <span  style="color:red"  *ngIf="pwdcontrol.touched && pwdcontrol.invalid">Password is Mandatory</span>
+        </div>
+    <button type="login" class="btn btn-success"   [disabled]="useForm.invalid">Login</button>
+    
+</form>
+

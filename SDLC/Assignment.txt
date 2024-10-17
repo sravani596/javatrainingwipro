@@ -1,0 +1,40 @@
+(a) Wired Network: As we all know, “wired” refers to any physical medium made up of cables. Copper wire, twisted pair, or fiber optic cables are all options. A wired network employs wires to link devices to the Internet or another network, such as laptops or desktop PCs.
+
+(b) Wireless Network: “Wireless” means without wire, media that is made up of electromagnetic waves (EM Waves) or infrared waves. Antennas or sensors will be present on all wireless devices. Cellular phones, wireless sensors, TV remotes, satellite disc receivers, and laptops with WLAN cards are all examples of wireless devices. For data or voice communication, a wireless network uses radiofrequency waves rather than wires.
+
+Types of Networks
+
+(a) Wi-Fi
+
+The industry-standard wireless local area network (WLAN) technology for linking computers and other electronic devices to one another and the Internet. Wi-Fi is a wireless variant of a wired Ethernet network that is frequently used in conjunction with it (see Ethernet). 
+WiFi is a type of wireless networking that uses radio frequencies to send and receive data. WiFi allows users to connect to the Internet at high speeds without the necessity of cables. WiFi stands for “wireless fidelity” and is a phrase that is often used to refer to wireless networking technologies. A wireless router is used to connect to the internet. When you connect to Wi-Fi, you’re connecting to a wireless router that connects your Wi-Fi-enabled devices to the Internet.
+
+(b) Bluetooth
+
+Bluetooth is a telecommunication industry standard that outlines how mobile devices, PCs, and other equipment can communicate wirelessly across short distances. This wireless technology allows Bluetooth-enabled devices to communicate with one another. It connects desktop and laptop computers, PDAs (such as the Palm Pilot or Handspring Visor), digital cameras, scanners, cellular phones, and printers over short distances.
+
+			
+S.No	Wired Network	                            						Wireless Network
+1.	A wired network employs wires to 						“Wireless” means without wire, media that is made up of	electromagnetic waves or infrared waves.											Antenna or sensors will be present on all wireless devices.
+	link devices to the internet
+	or another network such as laptop
+					                                              	
+                                                                                               
+			
+2. 	Faster transmission speed 							2.Slow transmission speed 
+3.	Propagation delay is Low							3.Propagation delay is high
+4.	More Secure & hence Reliable							4.Less Secure & hence less Reliable
+5.	Devices must be hard-wired							5.Installation is Quick
+6.	Less Expensive									6.More Expensive
+7.	High installation & maintenance cost 						7.Low installation & maintenance cost 
+8.	Hub, Switch, etc. devices are used						8.Wireless routers, access points, etc. are used.
+9.Examples include telephone networks,                                                  9.Examples of wireless networks include cell phone networks, 
+                                                                                           wireless local area networks (WLANs), 
+                                                                                           wireless sensor networks,
+                                                                                           satellite communication networks, and terrestrial microwave networks.
+ cable television or internet access, 
+and fiber-optic communication. 
+
+
+Assignment 1: Draw your Home Network Topology and explain how you are accessing the RPS Lab environment. 
+Assignment 2: Identify a real-world application for both parallel computing and networked systems. Explain how these technologies are used and why they are important in that context. Subm

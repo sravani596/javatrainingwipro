@@ -1,0 +1,11 @@
+.container {
+    max-width: 600px; /* Limit the width of the form */
+}
+
+h2 {
+    margin-bottom: 30px; /* Space below the header */
+}
+
+.btn {
+    width: 100%; /* Full-width buttons */
+}

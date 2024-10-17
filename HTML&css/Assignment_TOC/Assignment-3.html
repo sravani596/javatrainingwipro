@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Column Layout with CSS Box Model</title>
+    <style>
+        /* Applying CSS Box Model */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .left-column, .right-column, .main-content {
+            padding: 20px;
+            margin: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+        }
+
+        .left-column, .right-column {
+            flex: 1;
+        }
+
+        .main-content {
+            flex: 2;
+        }
+
+        /* Ensuring the form takes full width */
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        form input[type="text"], form input[type="email"], form input[type="submit"] {
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Multi-Column Layout Example</h1>
+        <p>This page demonstrates the use of the CSS box model and flexbox layout.</p>
+    </header>
+
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="left-column">
+            <h2>Left Sidebar</h2>
+            <p>This is the left sidebar, containing any supplementary information.</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2>Main Content</h2>
+            <p>This is the main content area. You can add your articles or sections here.</p>
+
+            <section>
+                <h3>About the Page</h3>
+                <p>This section gives a brief overview of the page and its elements. HTML is a markup language used to create webpages, and this example includes common components used on a basic webpage.</p>
+            </section>
+
+            <article>
+                <h3>Sample Data Table</h3>
+                <p>Below is a sample table containing information about fictional products:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Wireless Mouse</td>
+                            <td>$15.99</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>USB Keyboard</td>
+                            <td>$12.99</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>HD Monitor</td>
+                            <td>$129.99</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <section>
+                <h3>User Information Form</h3>
+                <p>Please fill out the form below:</p>
+
+                <form action="#" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </section>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="right-column">
+            <h2>Right Sidebar</h2>
+            <p>This is the right sidebar, containing additional information or links.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Thank you for visiting! &copy; 2024 Multi-Column Layout Page</p>
+    </footer>
+
+</body>
+</html>

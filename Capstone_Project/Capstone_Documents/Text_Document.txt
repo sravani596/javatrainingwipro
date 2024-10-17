@@ -1,0 +1,298 @@
+------------------------services-----------------------
+
+1. **Farming Partner Management Service**  
+
+   - Manages farm partners and their products (fruits, vegetables, pulses).
+   - CRUD operations on products.
+   
+2. **Customer Management Service**  
+
+   - Manages customer profiles, sign-up, sign-in, subscriptions, and orders.
+   
+3. **Product Catalog Service**  
+   - Handles product details, availability checks, and updates for fruits, vegetables, and pulses.
+   - Product categories and real-time inventory.
+
+4. **Order Management Service**  
+   - Manages placing, tracking, and updating customer orders.
+   - Subscription services (weekly/monthly).
+
+5. **Payment Service**  
+   - Integrates with a payment gateway to handle customer transactions.
+   
+6. **Review and Rating Service**  
+   - Collects and displays customer feedback for products.
+
+7. **Notification Service**  
+   - Sends notifications for order status, delivery updates, etc.
+   
+8. **Authentication Service (JWT)**  
+   - Manages authorization and roles (farmers, customers, admins) using JWT.
+
+9. **API Gateway**  
+   - Manages routing and security between microservices.
+
+10. **Discovery Service (Eureka)**  
+   - Manages service registration and discovery for inter-service communication.
+
+
+
+
+
+-------------------------------User Stories--------------------
+Each sprint can generate multiple user stories. Here’s a breakdown based on your sprints:
+
+#### **Sprint 1: Spring Boot - Backend Setup**
+1. **As a developer**, I want to set up a Spring Boot project so I can start developing backend functionality.
+2. **As a system**, I want to store farming partners and customer data in MySQL to manage users effectively.
+3. **As a customer**, I want to view available fruits, vegetables, and pulses, so I can choose and order them.
+4. **As a farmer**, I want to update my available products, so customers can see what is available.
+5. **As a user**, I want to securely log in using JWT, so my sessions are protected.
+6. **As a customer**, I want to pay for my orders securely through a payment gateway.
+
+#### **Sprint 2: Angular - Frontend Development**
+1. **As a customer**, I want a responsive interface to browse fruits, vegetables, and pulses.
+2. **As a customer**, I want to add items to my cart and edit my selections before checking out.
+3. **As a farmer**, I want to mark products as available or unavailable, so customers know what they can order.
+4. **As a user**, I want the Angular app to fetch real-time data from the backend (Spring Boot REST API).
+
+#### **Sprint 3: Advanced Features and User Interaction**
+1. **As a customer**, I want real-time product availability checks, so I can know which products are available before placing an order.
+2. **As a user**, I want to leave reviews and ratings on the products I have ordered.
+3. **As a customer**, I want a dashboard to manage my orders and subscriptions.
+4. **As a developer**, I want to improve the UI with smooth transitions and animations for a better user experience.
+5. **As a new user**, I want robust validation during sign-up, so my account information is correct.
+
+#### **Sprint 4: Microservices and System Integration**
+1. **As a developer**, I want to break the platform into microservices, so each feature can be managed independently.
+2. **As a system**, I want an API Gateway to route and secure traffic between services.
+3. **As a developer**, I want to containerize each microservice using Docker to improve scalability and portability.
+4. **As a system**, I want microservices to communicate with each other reliably to ensure smooth order processing.
+5. **As a developer**, I want to monitor and log microservices to ensure system health and performance.
+
+#### **Sprint 5: Testing, Deployment, and Documentation**
+1. **As a tester**, I want to write and run automated tests to verify that the system works correctly (Mocha, Chai, Jest).
+2. **As a developer**, I want to deploy the application to Kubernetes for scalable cloud deployment.
+3. **As a developer**, I want to optimize the system for performance to ensure fast and reliable service.
+4. **As a developer**, I want to provide detailed documentation, so future developers can understand the system.
+
+### **Project Flow**
+1. **Backend Setup (Spring Boot)**:
+   - Set up Spring Boot for various services like farming partners, customers, products, orders, and payments.
+   - RESTful APIs will expose CRUD operations to manage product catalogs, customer profiles, orders, and more.
+   - Use JWT for security, ensuring different user roles (farmers, customers, admins) are managed properly.
+   - Integrate payment gateway APIs to handle transactions.
+
+2. **Frontend Development (Angular)**:
+   - Develop user-friendly Angular components to allow customers to browse products, place orders, manage subscriptions, and more.
+   - Angular services will consume the Spring Boot RESTful APIs to fetch or update data dynamically.
+
+3. **Advanced Features**:
+   - Add real-time product availability features, customer reviews and ratings, and a dashboard to manage orders.
+   - Enhance the frontend with CSS3 transitions and animations for a smooth user experience.
+   - Implement data validation during user registration and sign-in for better security.
+
+4. **Microservices Architecture**:
+   - Decompose the platform into multiple microservices (as outlined above), ensuring scalability, modularity, and easier management.
+   - Use Eureka for service discovery and an API Gateway to handle inter-service communication.
+   - Containerize services using Docker and ensure smooth communication with APIs.
+
+5. **Testing, Deployment, and Monitoring**:
+   - Write unit and integration tests using testing frameworks like Mocha, Chai, and Jest.
+   - Deploy the system on Kubernetes, ensuring scalability and high availability in the cloud.
+   - Use monitoring tools (e.g., Prometheus) and logging (e.g., ELK stack) for tracking the health and performance of your microservices.
+
+-------------------------------------
+For each of the microservices in the **Organic Farms System**, you will define attributes based on their responsibilities and functionalities. Below are the attributes for each microservice, followed by a high-level implementation approach.
+
+### 1. **Farming Partner Management Service**
+This service manages farming partners and their products (fruits, vegetables, and pulses).
+
+**Attributes**:
+- **Partner**:
+  - `partnerId` (Long) – unique identifier
+  - `name` (String) – partner's name
+  - `location` (String) – farm location
+  - `contactNumber` (String) – contact details
+  - `email` (String) – email address
+  
+- **Product**:
+  - `productId` (Long) – unique product identifier
+  - `name` (String) – product name (e.g., apple, spinach)
+  - `category` (String) – type (fruit, vegetable, pulse)
+  - `price` (Double) – product price per unit
+  - `quantityAvailable` (Integer) – available stock
+  - `availability` (Boolean) – product available or not
+
+**Implementation**:
+- **Entities**: `Partner`, `Product`
+- **Repositories**: Use Spring Data JPA for CRUD operations.
+- **Endpoints**:
+  - `POST /partners` – add a new partner
+  - `GET /partners/{id}` – retrieve a partner
+  - `POST /partners/{id}/products` – add products for a partner
+  - `GET /partners/{id}/products` – list products for a partner
+  - `PUT /partners/{id}/products/{productId}` – update product
+  - `DELETE /partners/{id}/products/{productId}` – delete product
+  
+### 2. **Customer Management Service**
+Handles customer profiles, orders, and subscriptions.
+
+**Attributes**:
+- **Customer**:
+  - `customerId` (Long) – unique identifier
+  - `name` (String) – customer name
+  - `email` (String) – email address
+  - `password` (String) – hashed password
+  - `address` (String) – customer address
+  - `phoneNumber` (String) – contact number
+  
+- **Subscription**:
+  - `subscriptionId` (Long) – unique identifier
+  - `type` (String) – weekly/monthly
+  - `startDate` (Date) – subscription start date
+  - `endDate` (Date) – subscription end date
+  - `products` (List<Product>) – list of subscribed products
+
+**Implementation**:
+- **Entities**: `Customer`, `Subscription`
+- **Repositories**: Use Spring Data JPA for CRUD operations.
+- **Endpoints**:
+  - `POST /customers/signup` – register a new customer
+  - `POST /customers/login` – login customer
+  - `GET /customers/{id}` – retrieve customer profile
+  - `POST /customers/{id}/subscriptions` – create subscription
+  - `GET /customers/{id}/subscriptions` – view subscriptions
+  
+### 3. **Product Catalog Service**
+Handles product availability, categories, and real-time inventory.
+
+**Attributes**:
+- **Product**:
+  - `productId` (Long) – unique identifier
+  - `name` (String) – product name
+  - `category` (String) – type (fruit, vegetable, pulse)
+  - `price` (Double) – price per unit
+  - `quantityAvailable` (Integer) – available stock
+  - `availability` (Boolean) – availability status
+
+**Implementation**:
+- **Entity**: `Product`
+- **Repositories**: Spring Data JPA to manage product inventory.
+- **Endpoints**:
+  - `GET /products` – view all products
+  - `GET /products/{id}` – view product details
+  - `PUT /products/{id}` – update product information
+  - `GET /products/categories` – list of product categories
+  - `GET /products/availability` – check real-time availability
+  
+### 4. **Order Management Service**
+Manages customer orders, tracking, and subscriptions.
+
+**Attributes**:
+- **Order**:
+  - `orderId` (Long) – unique order identifier
+  - `customerId` (Long) – customer placing the order
+  - `orderDate` (Date) – date of order
+  - `orderItems` (List<OrderItem>) – list of products in the order
+  - `totalAmount` (Double) – total cost
+  - `status` (String) – order status (pending, shipped, delivered)
+
+- **OrderItem**:
+  - `orderItemId` (Long) – unique identifier
+  - `productId` (Long) – product being ordered
+  - `quantity` (Integer) – quantity of product
+  - `price` (Double) – price of the product
+
+**Implementation**:
+- **Entities**: `Order`, `OrderItem`
+- **Repositories**: Use JPA for managing orders.
+- **Endpoints**:
+  - `POST /orders` – place a new order
+  - `GET /orders/{id}` – get details of a specific order
+  - `GET /customers/{id}/orders` – get customer’s order history
+  - `PUT /orders/{id}` – update order status
+  
+### 5. **Payment Service**
+Integrates with a payment gateway for processing payments.
+
+**Attributes**:
+- **Payment**:
+  - `paymentId` (Long) – unique identifier
+  - `orderId` (Long) – order associated with the payment
+  - `paymentDate` (Date) – date of payment
+  - `amount` (Double) – total amount
+  - `paymentStatus` (String) – status (pending, completed)
+
+**Implementation**:
+- **Entity**: `Payment`
+- **Payment Gateway Integration**: Use a third-party API like Stripe or PayPal.
+- **Endpoints**:
+  - `POST /payments` – process payment for an order
+  - `GET /payments/{id}` – check payment status
+
+### 6. **Review and Rating Service**
+Handles customer feedback for products.
+
+**Attributes**:
+- **Review**:
+  - `reviewId` (Long) – unique identifier
+  - `customerId` (Long) – customer leaving the review
+  - `productId` (Long) – product being reviewed
+  - `rating` (Integer) – rating given by customer (1-5)
+  - `comment` (String) – customer comment
+
+**Implementation**:
+- **Entity**: `Review`
+- **Repositories**: Manage reviews with Spring Data JPA.
+- **Endpoints**:
+  - `POST /reviews` – leave a review
+  - `GET /products/{id}/reviews` – view reviews for a product
+  
+### 7. **Notification Service**
+Sends notifications for order updates and subscriptions.
+
+**Attributes**:
+- **Notification**:
+  - `notificationId` (Long) – unique identifier
+  - `customerId` (Long) – customer receiving the notification
+  - `message` (String) – notification message
+  - `date` (Date) – date of notification
+  - `readStatus` (Boolean) – read/unread
+
+**Implementation**:
+- **Entity**: `Notification`
+- **Endpoints**:
+  - `POST /notifications` – send notification
+  - `GET /customers/{id}/notifications` – get customer notifications
+  
+### 8. **Authentication Service (JWT)**
+Handles user authentication and role-based access control using JWT.
+
+**Attributes**:
+- **User**:
+  - `userId` (Long) – unique identifier
+  - `username` (String) – login username
+  - `password` (String) – hashed password
+  - `role` (String) – user role (admin, customer, farmer)
+
+**Implementation**:
+- Use Spring Security for handling authentication.
+- Use JWT tokens for authorization.
+- **Endpoints**:
+  - `POST /auth/signup` – register new users
+  - `POST /auth/login` – login user and generate JWT
+  - `GET /auth/roles` – retrieve user roles
+
+### 9. **API Gateway**
+Manages routing and security for incoming requests to appropriate microservices.
+
+**Implementation**:
+- Use **Spring Cloud Gateway** to route requests to individual microservices.
+- Centralize authentication and authorization using JWT.
+- **Endpoints**: Routes all requests to the appropriate service.
+
+### 10. **Discovery Service (Eureka)**
+Handles service registration and discovery for dynamic load balancing.
+
+

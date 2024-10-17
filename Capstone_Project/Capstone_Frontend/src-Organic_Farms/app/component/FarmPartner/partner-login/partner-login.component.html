@@ -1,0 +1,39 @@
+<p>partner-login works!</p>
+
+
+<h1>Welcome To FarmPartner Login Page</h1>
+
+<!-- <button (click)="navigateToSignUp()">Click to go to Sign Up FarmPartner</button> -->
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title text-center">FarmPartner Login</h3>
+          <form (ngSubmit)="onLoginSubmit()">
+            
+            <!-- Email Input -->
+            <div class="form-group mb-3">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" name="email" [(ngModel)]="email" required>
+            </div>
+
+            <!-- Password Input -->
+            <div class="form-group mb-3">
+              <label for="password">Password</label>
+              <input type="password" id="password" class="form-control" name="password" [(ngModel)]="password" required>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-block">Login</button>
+              <button type="button" class="btn btn-secondary btn-block" (click)="navigateToSignup()">Sign Up</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

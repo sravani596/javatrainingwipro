@@ -1,0 +1,47 @@
+eclipse workspace
+ 
+C:\Users\yesen\eclipse-workspace
+
+git details
+Training Start date		25th July to 15th Oct'24
+
+Batch Name			CP_Java Fullstack
+
+GIT Username			b156user04
+
+GIT Email ID			b156user04@rpsconsulting.in
+
+GIT Lab Password		Wipro@2024
+
+GIT Lab URL			http://10.0.1.200:8929	10.0.8.3:8929
+
+Cloud Username
+
+24NAG2030_U03
+
+Cloud Lab Password
+
+rps@12345
+
+Cloud Lab URL
+
+https://cloud4.rpsconsulting.in/console/#/
+
+ Sravs@596
+Sravs@596
+
+
+-----------------------
+https://github.com/javeed512/CP_JavaFSD.git
+
+ABC596@sravs  ----pwd for MySQL
+
+
+
+ALTER TABLE products MODIFY COLUMN name VARCHAR(20);
+
+
+
+
+https://github.com/ParthGurval/Wipro_Capstone_Team4/tree/main
+https://creately.com/diagram/example/hsop3s6x/capstone-flowchart

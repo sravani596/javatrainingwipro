@@ -1,0 +1,21 @@
+login and authentication
+
+
+ git init
+ git remote add origin https://github.com/ParthGurval/Wipro_Capstone_Team4.git
+git config --global user.email "sravanivattikuti666@gmail.com"
+ git config --global user.name "sravani596"
+ git branch -M main
+git pull --rebase origin main
+git status
+
+-------------------------
+git add .
+git commit -m "first change"
+ git push -u origin main
+-------------------------------
+pulling
+
+git pull origin main
+git push origin main
+

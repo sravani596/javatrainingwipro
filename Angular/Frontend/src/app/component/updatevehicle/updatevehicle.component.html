@@ -1,0 +1,29 @@
+<p>updatevehicle works!</p>
+<form #myform="ngForm" method="post" class="container col-md-4" (ngSubmit)="updateVehicle(myform.value)">
+    <div class="form-group">
+      <label>Vehicle Number:</label>
+      <input type="text" class="form-control" name="vno" #vnocontrol="ngModel" required ngModel>
+      <span style="color: red;" *ngIf="vnocontrol.touched && vnocontrol.invalid">Vehicle Number is Mandatory</span>
+    </div>
+  
+    <div class="form-group">
+      <label>Vehicle Name:</label>
+      <input type="text" class="form-control" name="vname" #vnamecontrol="ngModel" required ngModel>
+      <span style="color: red;" *ngIf="vnamecontrol.touched && vnamecontrol.invalid">Vehicle Name is Mandatory</span>
+    </div>
+  
+    <div class="form-group">
+      <label>Price:</label>
+      <input type="number" class="form-control" name="price" #pricecontrol="ngModel" required ngModel>
+      <span style="color: red;" *ngIf="pricecontrol.touched && pricecontrol.invalid">Price is Mandatory</span>
+    </div>
+  
+    <div class="form-group">
+      <label>Purchase Date:</label>
+      <input type="date" class="form-control" name="purchaseDate" #purchaseDatecontrol="ngModel" required ngModel>
+      <span style="color: red;" *ngIf="purchaseDatecontrol.touched && purchaseDatecontrol.invalid">Purchase Date is Mandatory</span>
+    </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="myform.invalid">Update</button>
+  </form>
+  

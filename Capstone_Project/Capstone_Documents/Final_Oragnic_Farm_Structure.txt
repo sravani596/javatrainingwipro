@@ -1,0 +1,308 @@
+
+
+
+Organic Farm
+
+1. User-Service (JWT for Authentication and Role-based Access)
+
+	Attributes:
+			User Entity:
+			user_id
+			username
+			password(bycrypt password)
+			email
+			role (admin, farmpartner, customer)
+
+	Endpoints:
+			POST /users/register - Register a new user (Admin/FarmPartner/Customer)
+			POST /users/login - Login and receive JWT token
+			GET /users/{id} - Get user by ID (Admin can view all users)
+			DELETE /users/{id} - Delete user by ID (Admin access only)
+			PUT /users/{id} - Update user profile (this endpoint shoudn't allow users to update their roles by themselves only admin can update it )
+
+	User-Service
+	Attributes:
+	user_id: Good, serves as the primary key.
+	username: Clear and essential for login.
+	password: Make sure this is securely hashed (do bycrtpting for this).
+	email: Valid for communication and login.
+	role: Clearly defines roles, but ensure that role-based access is enforced properly (admin, farmpartner, customer).
+	Endpoints: The set of endpoints looks good. JWT implementation should be secure, and admin access control should be enforced properly.
+	
+			
+2. Admin Entity (Attributes for User Management):
+
+	Attributes:
+			admin_id (Primary Key)
+			username
+			email
+			password (Hashed for security)
+			role (Admin role to distinguish from other users)
+			created_at (Timestamp for when the admin was created)
+			updated_at (Timestamp for when the admin details were last updated)
+
+	Endpoints (Admin Actions):
+
+			Customers Management:
+				GET /admin/customers - View all customers
+				GET /admin/customers/{id} - View a specific customer by ID
+				DELETE /admin/customers/{id} - Delete a specific customer by ID
+				
+			FarmPartners Management:
+				GET /admin/farmpartners - View all farmpartners
+				GET /admin/farmpartners/{id} - View a specific farmpartner by ID
+				DELETE /admin/farmpartners/{id} - Delete a specific farmpartner by ID
+				
+			Orders Management:
+				GET /admin/orders - View all orders
+				GET /admin/orders/{id} - View a specific order by ID
+				DELETE /admin/orders/{id} - Delete a specific order by ID
+
+		Admin Entity
+		Attributes:
+
+		Ensure that admin_id is linked to the general User Entity, so the role differentiation happens through the role field in the User table.
+		created_at, updated_at: These timestamps should apply to user creation and updates, not specifically to the admin entity.
+		Endpoints:
+
+		All endpoints seem fine, but make sure that the Admin role is checked before allowing access to these actions.
+				
+				
+3. Customer-Service
+
+	Attributes:
+			Customer Entity:
+			customer_id
+			name
+			email
+			address
+			phone
+
+	Endpoints:
+			POST /customers - Add new customer
+			PUT /customers/{id} - Update customer details
+			DELETE /customers/{id} - Delete customer
+			GET /customers/{id} - Get customer by ID
+			POST /customers/cart - Add product to cart
+			PUT /customers/cart/{cart_id} - Update cart (quantity)
+			DELETE /customers/cart/{cart_id} - Delete cart item
+			POST /customers/orders - Place an order
+			POST /customers/payment - Make a payment
+			POST /customers/review/{farmpartner_id} - Give a rating/review to farm partner
+			
+		Customer-Service
+		Attributes:
+		The attributes seem accurate for a customer entity.
+		
+		Endpoints:
+		POST /customers/cart: This should be related to a separate Cart-Service (as defined in point 9). You should remove cart-related operations from here and centralize them under the Product-Cart-Service.
+		POST /customers/orders, POST /customers/payment: Similar to cart-related operations, this should be handled by Order-Service and Payment-Service, respectively.
+		POST /customers/review/{farmpartner_id}: This is better suited under the Rating and Review Service.
+			
+4. FarmPartner-Service
+
+	Attributes:
+			FarmPartner Entity:
+			partner_id
+			name
+			email
+			address
+			phone
+
+	Endpoints:
+			POST /farmpartners - Register as a farmpartner
+			PUT /farmpartners/{id} - Update farmpartner details
+			DELETE /farmpartners/{id} - Delete farmpartner by ID
+			GET /farmpartners/{id} - Get farmpartner by ID
+			POST /farmpartners/products - Add a new product
+			PUT /farmpartners/products/{product_id} - Update product
+			DELETE /farmpartners/products/{product_id} - Delete product
+			GET /farmpartners/products - Get all products
+			
+		FarmPartner-Service
+		Attributes:
+		Ensure partner_id is linked to the User table through a role field.
+		All other attributes look good for a farm partner.
+
+		Endpoints:
+		These endpoints are relevant to farm partners. Ensure that product operations are correctly handled under Product-Service and are tied to the farm partner in the database.
+
+			
+5. Product-Service
+
+	Attributes:
+			Product Entity:
+			product_id
+			name
+			category (fruit, vegetable, pulse)
+			price
+			quantity
+			availability (true/false)
+
+	Endpoints:
+			POST /products - Add a new product
+			PUT /products/{product_id} - Update product
+			DELETE /products/{product_id} - Delete product
+			GET /products/{product_id} - Get product by ID
+			GET /products - Get all products
+			
+	Product-Service
+		Attributes:
+		The attributes seem clear. You may want to add an inventory or stock attribute to reflect the available quantity of products.
+		Consider adding a foreign key to FarmPartner (partner_id) to link products to their seller.
+
+		Endpoints:
+		No issues. These endpoints work for product management. Ensure proper linking between products and farm partners.
+		
+		
+6. Order-Service (Order-service represents the overall purchase made by a customer. It contains information about the customer, the total amount, the date of the order, and the status of the order (e.g., pending, completed, canceled).)
+
+	Attributes:
+			Order Entity:
+			order_id
+			customer_id //foreign key
+			order_date
+			status (pending, completed, canceled)
+			total_amount
+			
+	Endpoints:
+			POST /orders - Place an order
+			PUT /orders/{order_id} - Update order status
+			DELETE /orders/{order_id} - Delete order
+			GET /orders/{order_id} - Get order by ID
+			GET /orders - Get all orders
+			GET /orders/customer/{customer_id} - Get all orders by customer
+	
+	Order-Service
+		Attributes:
+		Attributes are correct, but do add:
+		shipping_address: Important for delivery.
+		payment_status: To track if the order was paid.
+		
+		Endpoints:
+		POST /orders: Ensure that this triggers a sequence of steps, like checking product availability, updating stock, etc.
+		PUT /orders/{order_id}: Should have clear constraints on who can change the order status (customer vs farm partner vs admin). so here order status can be changed only via farmpartner
+	
+7. OrderItem (OrderItem represents the individual products that are part of the order. Each order can consist of multiple order items. For example, if a customer orders 3 different products, each product will be an OrderItem associated with the same Order.
+
+	Attributes:
+			OrderItem Entity:
+			order_item_id
+			order_id (FK)
+			product_id (FK)
+			quantity
+			price
+			
+	Endpoints:
+			POST /OrderItem - Add order details
+			PUT /OrderItem/{order_item_id} - Update order details
+			DELETE /OrderItem/{order_item_id} - Delete order details
+			GET /OrderItem/{order_item_id} - Get order details by ID
+			GET /OrderItem - Get all order details
+			
+	Order-Details-Service
+		Attributes:
+		Ensure proper foreign key relationships between Order and Product.
+		
+		Endpoints:
+		These endpoints are correct. This service should be linked with the Order-Service to handle order-specific product details.
+			
+8. Payment-Service
+	Attributes:
+			Payment Entity:
+			payment_id
+			order_id (FK)
+			payment_date
+			amount
+			payment_method
+			status(pending,failed,success)
+
+	Endpoints:
+			POST /payments - Make a payment
+			PUT /payments/{payment_id} - Update payment details
+			DELETE /payments/{payment_id} - Delete payment
+			GET /payments/{payment_id} - Get payment by ID
+			GET /payments - Get all payments
+
+	 Payment-Service
+		Attributes:
+		status: It might help to add multiple payment statuses like pending, failed, successful for clarity.
+		
+		Endpoints:
+		The endpoints seem fine, and they properly manage the payment process.
+
+9. Product-Cart-Service
+	Attributes:
+			Cart Entity:
+			cart_id
+			customer_id (FK)
+			product_id (FK)
+			quantity
+
+	Endpoints:
+			POST /cart - Add product to cart
+			PUT /cart/{cart_id} - Update cart (change quantity)
+			DELETE /cart/{cart_id} - Remove product from cart
+			GET /cart/{cart_id} - Get cart details by ID
+			GET /cart/customer/{customer_id} - Get all cart items for a customer
+			
+		Product-Cart-Service
+		Attributes:
+		cart_id, customer_id, product_id, and quantity are fine, but consider adding:
+		created_at, updated_at: For auditing when the cart was modified.
+		price: Capturing the product price at the time it was added to the cart (in case prices change later).
+		
+		Endpoints:
+		These endpoints are correct, as long as the cart management operations are isolated in this service.
+			
+10. Rating and Review Service
+
+	Attributes for Rating and Review:
+			review_id (Primary Key)
+			customer_id (Foreign Key linking to Customer)
+			farmpartner_id (Foreign Key linking to FarmPartner)
+			rating (Integer value, e.g., 1-5 stars)
+			review_text (Text, description or feedback provided by the customer)
+			
+			
+	Endpoints:
+			
+			POST /reviews - Create a new review
+			Description: Add a review and rating for a FarmPartner by a customer.
+			
+			PUT /reviews/{review_id} - Update an existing review
+			Description: Modify the content of a review, such as updating the rating or review text.
+
+			DELETE /reviews/{review_id} - Delete a review
+			Description: Remove a review by its ID.
+
+			GET /reviews/customer/{customer_id} - Get reviews by Customer ID
+			Description: Retrieve all reviews written by a specific customer.
+
+			GET /reviews/farmpartner/{farmpartner_id} - Get reviews by FarmPartner ID
+			Description: Retrieve all reviews for a specific FarmPartner.
+
+			GET /reviews - Get all reviews
+			Description: Retrieve a list of all reviews in the system.
+			
+	Rating and Review Service
+		Attributes:
+		The attributes are appropriate. You might also want to add a title to the review.
+
+		Endpoints:
+		No issues with the endpoints. They provide CRUD operations and filtering based on customers and farm partners.
+			
+12. Gateway-Service
+	Acts as the API gateway for all services. This service will forward requests to the appropriate microservices based on the API path.
+	
+	Purpose: Make sure this properly forwards requests to the appropriate microservices. It should also handle authentication (via JWT tokens) and role-based access control.
+
+13. Eureka-Service
+	Eureka Discovery Server to manage service registration and discovery.
+
+	Purpose: This is fine for service registration and discovery. Ensure proper configurations for health checks.
+
+14. Config-Service
+	Manages centralized configuration for all microservices (e.g., database credentials, JWT secret keys, etc.).
+	
+	Purpose: Ensure proper configuration management. Sensitive information like JWT keys and database credentials should be encrypted and secured.

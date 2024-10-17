@@ -1,0 +1,28 @@
+<p>viewall works!</p>
+
+<div class="container">
+  <h2>All Vehicles</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Vehicle No</th>
+        <th>Vehicle Name</th>
+        <th>Price</th>
+        <th>Purchase Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehicle of vehicles">
+        <td>{{ vehicle.vno }}</td>
+        <td>{{ vehicle.vname }}</td>
+        <td>{{ vehicle.price }}</td>
+        <td>{{ vehicle.purchasedate }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteVehicle(vehicle.id)">Delete</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

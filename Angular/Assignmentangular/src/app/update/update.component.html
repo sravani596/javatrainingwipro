@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <h2>Update Vehicle</h2>
+  <form (ngSubmit)="updateVehicle()">
+    <div class="form-group">
+      <label for="vno">Vehicle Number</label>
+      <!-- Changed to accept alphanumeric input -->
+      <input type="text" [(ngModel)]="vehicle.vno" name="vno" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+      <label for="vname">Vehicle Name</label>
+      <input type="text" [(ngModel)]="vehicle.vname" name="vname" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" [(ngModel)]="vehicle.price" name="price" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+      <label for="purchaseDate">Purchase Date</label>
+      <input type="date" [(ngModel)]="vehicle.purchasedate" name="purchaseDate" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Vehicle</button>
+  </form>
+
+ 
+</div>

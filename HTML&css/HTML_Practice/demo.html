@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript User Object</title>
+</head>
+<body>
+
+    <h1>JavaScript User Object Example</h1>
+
+    <script>
+        // Step 1: Create a JavaScript object representing a user
+        const user = {
+            name: "John Doe",
+            email: "johndoe@example.com",
+            age: 30
+        };
+
+        // Step 2: Function to change the user's name
+        function changeName(newName) {
+            user.name = newName;
+            console.log(`Name has been changed to: ${user.name}`);  // Use backticks
+        }
+
+        // Step 3: Function to update the user's email
+        function updateEmail(newEmail) {
+            user.email = newEmail;
+            console.log(`Email has been updated to: ${user.email}`);  // Use backticks
+        }
+
+        // Step 4: Function to calculate the user's birth year based on their age
+        function calculateBirthYear() {
+            const currentYear = new Date().getFullYear();
+            const birthYear = currentYear - user.age;
+            console.log(`The user was born in: ${birthYear}`);  // Use backticks
+            return birthYear;
+        }
+
+        // Test the functions
+        console.log("Initial User Object: ", JSON.stringify(user, null, 2));
+
+        // Change the user's name
+        changeName("Jane Doe");
+
+        // Update the user's email
+        updateEmail("janedoe@example.com");
+
+        // Calculate the user's birth year
+        const birthYear = calculateBirthYear();
+
+        console.log("Updated User Object: ", JSON.stringify(user, null, 2));
+    </script>
+
+</body>
+</html>

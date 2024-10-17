@@ -1,0 +1,40 @@
+<p>string-interpolation works!</p>
+
+<ol class="container">
+  <li>string Interpolation</li>
+  <li> Property Binding</li>
+  <li>One-way and Two way binding </li>
+</ol>
+
+<div class="container">
+
+    <h1>{{ title }}</h1>  <!-- String Interpolation -->
+    <p>{{ description }}</p>
+
+    <img [src]="imageUrl" alt="Angular Logo" width="100" />    <!-- Property Binding -->
+  </div>
+
+  <div class="container">
+    <p>one way property binding</p>
+    <!-- One-Way Property Binding: Using [ ] to bind the button's label -->
+    <button [innerHTML]="buttonLabel"></button> <!--event binding-->
+  </div>
+  
+  <div>
+    <div class="container">
+      <p>Two way property binding</p>
+    <!-- Two-Way Data Binding: Using [(ngModel)] for input field -->
+    <input [(ngModel)]="userName" type="text" />
+    
+    <!-- Displaying the updated userName -->
+    <p>Hello, {{ userName }}!</p>
+  </div>
+
+  <!--Event binding-->
+  <div class="container">
+  <button (click)="onBuy()">Buy Now</button>
+  <p>{{ message }}</p>
+  </div>
+  
+  
+  

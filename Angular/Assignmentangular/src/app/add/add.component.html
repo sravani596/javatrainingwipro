@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Add Vehicle</h2>
+  <form [formGroup]="vehicleForm" (ngSubmit)="addVehicle()">
+    <div class="form-group">
+      <label for="vno">Vehicle Number</label>
+      <input id="vno" type="text" class="form-control" formControlName="vno">
+    </div>
+    <div class="form-group">
+      <label for="vname">Vehicle Name</label>
+      <input id="vname" type="text" class="form-control" formControlName="vname">
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input id="price" type="number" class="form-control" formControlName="price">
+    </div>
+    <div class="form-group">
+      <label for="purchasedate">Purchase Date</label>
+      <input id="purchasedate" type="date" class="form-control" formControlName="purchasedate">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Vehicle</button>
+  </form>
+</div>

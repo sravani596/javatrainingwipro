@@ -1,0 +1,38 @@
+<p>partner-dashboard works!</p>
+
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#">Partner Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Direct links for product actions without dropdown -->
+                    <li class="nav-item">
+                        <a class="nav-link text-white" [routerLink]="['/farmPartner/dashboard/product/add']">Add Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" [routerLink]="['/farmPartner/dashboard/product/update']">Update Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" [routerLink]="['/farmPartner/dashboard/product/getById']">Get Product By Id</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" [routerLink]="['/farmPartner/dashboard/product/getAll']">Get All Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" [routerLink]="['/farmPartner/dashboard/product/delete']">Delete Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" [routerLink]="['/farmPartner/dashboard/update']">Update Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Router Outlet for displaying nested routes -->
+    <router-outlet></router-outlet>
+</div>

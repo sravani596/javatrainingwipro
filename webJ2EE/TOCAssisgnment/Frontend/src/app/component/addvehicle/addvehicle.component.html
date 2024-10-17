@@ -1,0 +1,32 @@
+<p>add-vehicle works!</p>
+<p>addvehicle works!</p>
+
+<form #myform="ngForm" method="post" class="container col-md-4" (ngSubmit)="insertVehicle(myform.value)">
+    
+    <div class="form-group">
+        <label>Vehicle Number:</label>
+        <input type="text" class="form-control" name="vehicleNumber" #vnoControl="ngModel" required ngModel>
+        <span style="color: red;" *ngIf="vnoControl.touched && vnoControl.invalid">Vehicle Number is Mandatory</span>
+    </div>
+    
+    <div class="form-group">
+        <label>Vehicle Name:</label>
+        <input type="text" class="form-control" name="vehicleName" #vnameControl="ngModel" required ngModel>
+        <span style="color: red;" *ngIf="vnameControl.touched && vnameControl.invalid">Vehicle Name is Mandatory</span>
+    </div>
+    
+    <div class="form-group">
+        <label>Price:</label>
+        <input type="number" class="form-control" name="price" #priceControl="ngModel" required ngModel>
+        <span style="color: red;" *ngIf="priceControl.touched && priceControl.invalid">Price is Mandatory</span>
+    </div>
+    
+    <div class="form-group">
+        <label>Purchase Date:</label>
+        <input type="date" class="form-control" name="purchaseDate" #purchaseDateControl="ngModel" required ngModel>
+        <span style="color: red;" *ngIf="purchaseDateControl.touched && purchaseDateControl.invalid">Purchase Date is Mandatory</span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="myform.invalid">Submit</button>
+    
+</form>

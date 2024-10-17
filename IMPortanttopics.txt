@@ -1,0 +1,208 @@
+MYSQL:
+
+ABC596@sravs-----database password
+
+how to start sql in cmd
+
+C:\Users\yesen>mysql -u root -p
+password:ABC596@sravs
+
+----------------------------------------------------
+my own repository
+
+https://github.com/sravani596/javatrainingwipro.git------personal
+
+-------------------javeed sir git--------------------
+first time git cmds
+1.git clone https://github.com/javeed512/CP_JavaFSD.git
+from second time onwards
+git pull https://github.com/javeed512/CP_JavaFSD.git
+
+----------------------------------------------------------
+git status
+untracked files
+LayeredArchitecture/bin/com/wipro/ems/dao/EmployeeDaoImp.class
+ LayeredArchitecture/bin/com/wipro/ems/presentation/Client.class
+git add
+
+LayeredArchitecture/bin/com/wipro/ems/presentation/Client.class
+
+
+git add <file>
+git stash --include-untracked
+git pull https://github.com/javeed512/CP_JavaFSD.git
+
+git stash --include-untracked
+
+
+
+<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+
+--------------------------------------------------------------------
+Installation Angular:
+
+1.node (in google we have to search the node js server and install)
+D:\Angular>node --version
+v18.20.4
+
+2.
+D:\Angular>npm --version
+10.7.0
+
+
+3.npm install -g  @angular/cli@15.2.11    //-g global installation
+
+4.ng version //check the version
+5.yes
+6.creating new projects
+ng new myapp
+7.change the directory cd myapp
+8.compiling npm start or
+9.ng serve   //compile
+----------------------------------------------------------------
+
+sql --->jar file from maven repository
+add jar file to the lib folder
+add dependency in pom.xml---we have to search dependency in Maven Repository
+
+
+------------------------------------
+log4j---->jar file from maven repository
+add jar file to the lib folder
+add dependency in pom.xml---we have to search dependency in Maven Repository
+
+
+
+------------------------------
+swagger is like postman in spring (It is given by different company) why we have to use this we didn't remember the urls
+swagger
+
+<dependency>
+<groupId>org.springdoc</groupId>
+<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+<version>2.5.0</version>
+</dependency>
+----------------------------------------------
+
+
+
+webflux:
+web flux
+create table  users_table (id integer primary key AUTO_INCREMENT NOT NULL, name varchar(16) , email varchar(25)); //we will create table manually it uses h2
+
+ create table  users_table (id integer primary key AUTO_INCREMENT NOT NULL, name varchar(16) , email varchar(25));
+
+
+---------------------------
+how to install docker
+https://docs.docker.com/desktop/release-notes/
+
+click on windows
+accept
+create account for docker
+
+
+https://docs.docker.com/reference/   --->reference notes
+
+FROM openjdk:21-jdk
+EXPOSE 8100
+ 
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} welcome2030prj.jar
+ 
+ENTRYPOINT ["java", "-jar", "/welcome2030prj.jar"]
+
+
+1. cwd  :  project root
+ 
+2. docker buildx build -t welcome2030prj.jar
+ 
+3. To see the image   ----  docker image ls
+ 
+4. docker run -p 9100:8100 welcome2030prj.jar
+ 
+ 
+// to push in docker hub :  need to create a tag
+ 
+5. docker tag welcome2030prj.jar sush1dock/welcome2030prj.jar:2.0
+ 
+// push
+6. docker push sush1dock/welcome2030prj.jar:2.0
+ 
+7. docker run -p 9999:8100 sush1dock/welcome2030prj.jar:2.0
+ 
+ 
+// to pull
+ 
+8. docker pull sush1dock/welcome2030prj.jar:2.0
+ 
+ 
+reference link: https://docs.docker.com/reference/
+has context menu
+
+
+
+
+C:\Users\yesen\eclipse-workspace\DockerWorkspacse\dockerprj>docker --version
+
+
+docker buildx build -t welcome2030prj.jar
+
+docker buildx build -t welcome2030prj.jar . //create image
+
+docker image ls    //sow the images
+
+
+---------------------------
+installation of Kubernetes:
+
+https://chocolatey.org/install    //for downloading chocolatey
+click on individual
+give command on powershell run as administrator
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+------------------------------------------------
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download    //for downloading minikubes ref doc
+
+power shell run as administartor
+ choco --version
+ choco install minikube
+ minikube version
+
+
+ minikube start
+check docker is it visible ports or not
+ minikube dashboard
+----------------------------
+HElmchoco install kubernetes-helm ---->for install helm
+
+
+https://helm.sh/docs/----reference notes
+
+
+Jenkins
+https://www.jenkins.io/download/ ------reference
+and click on windows automatically download
+and u have to give these details
+first one check 
+second change port bcz tomcat also 8080 thats why
+test the portnumber finish
+
+next open the browser http://localhost:8080
+first time give the 
+intialpwdasking
+it will show the path and it will ask the details like username pwd ad so on and finish
+------------
+
+
+
+
+---------------------
+
+references
+study about Kubernetes:
+https://kubernetes.io/docs/home/
+
+Ref link for docker compose  : https://docs.docker.com/compose/
+
+

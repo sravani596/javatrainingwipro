@@ -1,0 +1,42 @@
+<p>create-product works!</p>
+
+
+<div class="container mt-5">
+    <h2 class="text-center">Add Product</h2>
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+        <div class="mb-3">
+            <label for="name" class="form-label">Product Name</label>
+            <input type="text" id="name" class="form-control" required [(ngModel)]="product.name" name="name">
+        </div>
+
+        <div class="mb-3">
+            <label for="type" class="form-label">Product Type</label>
+            <select id="type" class="form-select" required [(ngModel)]="product.type" name="type">
+                <option value="FRUIT">Fruit</option>
+                <option value="VEGETABLE">Vegetable</option>
+                <option value="PULSE">Pulse</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" id="price" class="form-control" required [(ngModel)]="product.price" name="price" min="0">
+        </div>
+
+        <div class="mb-3">
+            <label for="availableQuantity" class="form-label">Available Quantity</label>
+            <input type="number" id="availableQuantity" class="form-control" required [(ngModel)]="product.availableQuantity" name="availableQuantity" min="0">
+        </div>
+
+        <div class="mb-3">
+            <label for="partnerId" class="form-label">Partner ID</label>
+            <input type="number" id="partnerId" class="form-control" required [(ngModel)]="product.partnerId" name="partnerId" min="0">
+        </div>
+
+        <button type="submit" class="btn btn-primary me-2">Add Product</button>
+        <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear All</button>
+    </form>
+
+    <p *ngIf="successMessage" class="text-success mt-3">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</p>
+</div>
